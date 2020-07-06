@@ -1,0 +1,42 @@
+---
+title: "procedureBasic"
+author: "Rafael Sommer"
+date: "21/06/2020"
+output: html_document
+---
+
+### Q-Space Imaging
+
+#### Normalized signal decay (ADC) formula:
+
+$ln(E_{g}/E_{o}) = -\gamma^2g^2\delta^2(\Delta-\delta/3)D = -bD$
+
+Where:
+
+$\delta =$ Duration of MPG
+
+$\Delta =$ Time separation of MPG
+
+$g =$ Strength of MPG (amplitude)
+
+$\gamma =$ Magnetogyric ratio
+
+$D =$ Self-diffusion coefficient 
+
+This stands for Stejskal‐Tanner equation, assuming mono exponential signal attenuation and single water population
+
+### Relation between difusion echo measurements and displacement probabilities:
+
+$E_{\Delta}(q) = \int \overline{P}_{s}(R,\Delta)exp(i2\pi*q*R)dR $
+
+where: 
+
+$q = (2\pi)^-1\gamma\delta g$
+
+$E_{\Delta}(q)$ stands for the echo decay curve as a function of $q$
+
+$R =$ the displacement
+
+$ \overline{P}_{s}(R,\Delta) $ The probability of displacement
+
+
