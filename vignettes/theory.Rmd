@@ -1,11 +1,16 @@
 ---
-title: "procedureBasic"
-author: "Rafael Sommer"
-date: "21/06/2020"
-output: html_document
+title: "q-Space Myelin Map Theory"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{theory}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ### Q-Space Imaging
+
+Complete rationale and methodological explanations can be found in the technique validation paper:
+
 
 #### Normalized signal decay (ADC) formula:
 
@@ -38,5 +43,4 @@ $E_{\Delta}(q)$ stands for the echo decay curve as a function of $q$
 $R =$ the displacement
 
 $ \overline{P}_{s}(R,\Delta) $ The probability of displacement
-
 
