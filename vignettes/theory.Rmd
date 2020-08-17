@@ -14,9 +14,9 @@ Complete rationale and methodological explanations can be found in the technique
 
 #### Normalized signal decay (ADC) formula:
 
-$ln(E_{g}/E_{o}) = -\gamma^2g^2\delta^2(\Delta-\delta/3)D = -bD$
+$$ln(S_{g}/S_{o}) = -\gamma^2g^2\delta^2(\Delta-\delta/3)D = -bD$$
 
-Where:
+Given:
 
 $\delta =$ Duration of MPG
 
@@ -32,15 +32,15 @@ This stands for Stejskal‐Tanner equation, assuming mono exponential signal att
 
 ### Relation between difusion echo measurements and displacement probabilities:
 
-$E_{\Delta}(q) = \int \overline{P}_{s}(R,\Delta)exp(i2\pi*q*R)dR $
+$$ E_{\Delta}(q) = \int \overline{P}_{s}(R,\Delta)exp(i2\pi*q*R)dR $$
 
-where: 
+Given: 
 
-$q = (2\pi)^-1\gamma\delta g$
+$q = \sqrt{\frac{b}{\Delta - \frac{\delta}{3}}}$
 
 $E_{\Delta}(q)$ stands for the echo decay curve as a function of $q$
 
 $R =$ the displacement
 
-$ \overline{P}_{s}(R,\Delta) $ The probability of displacement
+$\overline{P}_{s}(R,\Delta)$ The probability of displacement
 

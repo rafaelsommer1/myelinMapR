@@ -16,7 +16,14 @@ normalise_qmm <- function (qmm, outfile = NULL, write = TRUE, verbose = TRUE) {
   nld = nld * mask
   if (write){
     if(verbose){message("Writing Nifti")}
+        if (is.null(outfile)){
+          message("No Output defined!!")
+          return(NULL)
+        }
+
     writenii(nld, outfile)
+
     }
+
     return(nld)
   }
