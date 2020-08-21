@@ -1,22 +1,17 @@
 setClass("gtab",
-         slots = c(bvals = "numeric",
+         slots = list(bvals = "numeric",
+                        qvals = "numeric",
                         bvecs = "matrix",
-                        b0_ind = "integer"
-                        bval_uni = "numeric"
+                        b0_ind = "logical",
+                        bval_uni = "integer",
                         bval_n = "integer"
-
-        )
-        )
+        ))
 
 setClass("qmm",
-         slots = c(
-
+         slots = list(
+                 signal = "array"),
+         contains = ("gtab")
          )
-
-
-         contains = c("list","gradient_tab")
-         )
-
 
 
 # Functions for creating classes
@@ -29,28 +24,51 @@ setClass("qmm",
 #' @export
 
 gradient <- function (bvec, bval) {
-        g = list(
-                        bvec = as.matrix(read.delim2(bvec, header = F)),
-                        bval = as.numeric(read.table(bval, header = F)),
-                        b0_ind = bval == 0,
-                        bval_uni = unique(bval[!b0_ind]),
-                        bval_n = length(unique(bval[!b0_ind])
-        ))
 
-        new(gtab)
-}
+        bvec = as.matrix(read.delim2(bvec, header = F))
+        bval = as.numeric(read.table(bval, header = F))
+        b0_ind = bval == 0
+        bval_uni = unique(bval[!b0_ind])
+        bval_n = length(unique(bval[!b0_ind]))
+
+
+        gtab <- new("gtab",
+                    bvals = bval,
+                    qvals = sqrt(bval),
+                    bvecs = bvec,
+                    b0_ind = b0_ind,
+                    bval_uni = as.integer(bval_uni),
+                    bval_n = bval_n
+            )
+
+        return(gtab)
+
+        }
 
 #' Create a qmm object
-#' @param nifti_file A nifti object with dwi data
-#' @param gradient A gradient_table object created with \codegradient()
+#' @param nifti A nifti object with dwi data
+#' @param gradient A gtab object created with \codegradient()
 #' @return A qmm object
 #' @author R.C.S
 #' @export
 
-qmm <- function (nifti_file, gtab){
+qmm <- function (nifti, gtab){
 
+        # Checks
+        if (!is.nifti(nifti)) {
+                message("nifti should be a nifti object")
+                return(NULL)
+        }
 
-        nii <- readnii(nifti_file)
+        signal <- nifti
 
+        new("qmm",
+            signal = signal,
+            bvals = gtab@bvals,
+            qvals = gtab@qvals,
+            bvecs = gtab@bvecs,
+            b0_ind = gtab@b0_ind,
+            bval_uni = gtab@bval_uni,
+            bval_n = gtab@bval_n )
 
 }
